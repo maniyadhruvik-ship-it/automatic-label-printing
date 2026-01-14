@@ -37,8 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const progressText = document.getElementById('progress-text');
 
-    // Live Ngrok URL for shared access
-    const serverUrl = 'https://nonencyclopedical-unsomberly-casimira.ngrok-free.dev';
+    // Dynamic Server URL
+    // If opened as a file, use localhost. If hosted (ngrok/localhost), use relative path.
+    const serverUrl = window.location.protocol === 'file:'
+        ? 'http://localhost:3001'
+        : '';
     let uploadedFiles = [];
     let stagedFiles = [];
     let isLoading = true;
