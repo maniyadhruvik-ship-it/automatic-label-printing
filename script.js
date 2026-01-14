@@ -136,12 +136,16 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('pdf', file);
         formData.append('batchName', batchName);
         try {
-            await fetch(`${serverUrl}/upload`, {
+            const response = await fetch(`${serverUrl}/upload`, {
                 method: 'POST',
                 body: formData,
                 headers: headers
             });
-        } catch (error) { console.error('Upload failed'); }
+            if (!response.ok) throw new Error('Upload failed');
+        } catch (error) {
+            console.error('Upload failed', error);
+            alert(`Upload failed for ${file.name}. Is the server running?`);
+        }
     }
 
     function renderBatchFilters() {
