@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressText = document.getElementById('progress-text');
 
     // Dynamic Server URL
-    // If opened as a file, use localhost. If hosted (ngrok/localhost), use relative path.
+    // If opened as a file, use localhost. If hosted (GitHub Pages/Ngrok), use the specific Ngrok URL.
     const serverUrl = window.location.protocol === 'file:'
         ? 'http://localhost:3001'
-        : '';
+        : 'https://nonencyclopedical-unsomberly-casimira.ngrok-free.dev';
     let uploadedFiles = [];
     let stagedFiles = [];
     let isLoading = true;
